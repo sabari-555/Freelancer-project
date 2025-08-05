@@ -1,0 +1,243 @@
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(-100%);
+  }
+
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    transform: scale(0.95);
+    opacity: 0;
+  }
+
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+:root {
+  --primary: #2563eb;
+  --secondary: #7c3aed;
+  --text: #1f2937;
+  --background: #f9fafb;
+  --card: #ffffff;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: system-ui, -apple-system, sans-serif;
+  line-height: 1.5;
+  color: var(--text);
+  background: var(--background);
+}
+
+.navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: var(--card);
+  padding: 1rem 2rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  z-index: 100;
+}
+
+.navbar-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  /* color: var(--primary); */
+  background: linear-gradient(135deg, #00c9ff, #92fe9d);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-decoration: none;
+  animation: slideIn 0.5s ease-out;
+}
+
+.nav-links {
+  display: flex;
+  gap: 2rem;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: var(--text);
+  transition: color 0.3s ease;
+  position: relative;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+  color: var(--primary);
+}
+
+.nav-links a.active::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: var(--primary);
+  animation: scaleIn 0.3s ease-out;
+}
+
+.hero {
+  margin-top: 4rem;
+  padding: 6rem 2rem;
+  text-align: center;
+  /* background: linear-gradient(135deg, var(--primary), var(--secondary)); */
+  /* background: linear-gradient(135deg, #7F00FF, #00FFFF); */
+  background: linear-gradient(135deg, #00c9ff, #92fe9d);
+  color: #f0f4f8;
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.3);
+  animation: fadeIn 1s ease-out;
+}
+
+.hero h1 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.hero p {
+  font-size: 1.25rem;
+  max-width: 600px;
+  margin: 0 auto 2rem;
+}
+
+.features,
+.projects,
+.talents,
+.about-content {
+  padding: 4rem 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.features-grid,
+.project-grid,
+.talent-grid,
+.about-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.feature-card,
+.project-card,
+.talent-card,
+.about-card {
+  background: var(--card);
+  padding: 2rem;
+  border-radius: 1rem;
+  box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease;
+  animation: fadeIn 0.5s ease-out;
+}
+
+.feature-card:hover,
+.project-card:hover,
+.talent-card:hover,
+.about-card:hover {
+  transform: translateY(-5px);
+}
+
+.project-budget,
+.talent-rate {
+  color: var(--primary);
+  font-weight: bold;
+  margin: 0.5rem 0;
+}
+
+.project-tags,
+.talent-skills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.project-tags span,
+.talent-skills span {
+  /* background: var(--background); */
+  color: red;
+  padding: 0.25rem 0.75rem;
+  border-radius: 1rem;
+  font-size: 0.875rem;
+  animation: scaleIn 0.3s ease-out;
+}
+
+.talent-header {
+  margin-bottom: 1rem;
+}
+
+.talent-title {
+  color: var(--secondary);
+  font-size: 0.875rem;
+  margin-top: 0.25rem;
+}
+
+.talent-description {
+  margin: 1rem 0;
+}
+
+.cta-button {
+  background-color: rgb(255, 0, 0);
+  color: white;
+  border: none;
+  padding: 10px 30px;
+  border-radius: 20px;
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .nav-links {
+    display: none;
+  }
+
+  .hero h1 {
+    font-size: 2rem;
+  }
+
+  .hero p {
+    font-size: 1rem;
+  }
+
+  .features-grid,
+  .project-grid,
+  .talent-grid,
+  .about-grid {
+    grid-template-columns: 1fr;
+  }
+}
